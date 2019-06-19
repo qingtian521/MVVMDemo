@@ -51,7 +51,7 @@ class ScrollingActivity : BaseViewModelActivity<ScrollingViewModel>() {
                     itemView.tv_name.text = itemData.name
                     itemView.tv_role.text = itemData.name
                 }
-                .onItemClick { itemView, itemData ->
+                .onItemClick { _, itemData ->
                     showToast("点击了 ${itemData.name}")
                 }
                 .create()

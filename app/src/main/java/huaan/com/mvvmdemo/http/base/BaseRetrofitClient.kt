@@ -1,6 +1,6 @@
 package huaan.com.mvvmdemo.http.base
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+//import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,7 +21,7 @@ abstract class BaseRetrofitClient {
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()
                 .create(service)
     }

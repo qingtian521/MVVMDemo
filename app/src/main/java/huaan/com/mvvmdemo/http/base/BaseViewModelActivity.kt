@@ -11,7 +11,6 @@ abstract class BaseViewModelActivity<VM: BaseViewModel> : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         initVM()
         super.onCreate(savedInstanceState)
-        startObserve()
     }
 
     private fun initVM() {
@@ -22,7 +21,6 @@ abstract class BaseViewModelActivity<VM: BaseViewModel> : BaseActivity() {
     }
 
     open fun providerVMClass(): Class<VM>? = null
-    open fun startObserve() {}
 
     override fun onDestroy() {
         super.onDestroy()
