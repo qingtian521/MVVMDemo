@@ -1,9 +1,9 @@
 package huaan.com.mvvmdemo.http.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * actor 晴天 create 2019/5/17

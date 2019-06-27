@@ -1,12 +1,10 @@
 package huaan.com.mvvmdemo
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import huaan.com.mvvmdemo.http.base.BaseViewModel
 import huaan.com.mvvmdemo.http.databean.Data
 import huaan.com.mvvmdemo.http.repository.ArticleRepository
-import kotlinx.coroutines.*
 
 class ScrollingViewModel : BaseViewModel() {
 
@@ -20,14 +18,8 @@ class ScrollingViewModel : BaseViewModel() {
         return datas
     }
 
-    private fun loadDatas() {
-        launchUI {
-            Log.i(TAG,"loadDatas start run in  ${Thread.currentThread().name}")
+    private fun loadDatas() = launchUI {
             val result = repository.getDatas()
-            Log.i(TAG,"loadDatas end  run in  ${Thread.currentThread().name}")
             datas.value = result.data
-        }
-        // Do an asynchronous operation to fetch users.
     }
-
 }

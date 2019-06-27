@@ -1,8 +1,6 @@
 package huaan.com.mvvmdemo.http.base
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import huaan.com.mvvmdemo.http.base.BaseViewModel
-import huaan.com.mvvmdemo.http.base.BaseActivity
+import androidx.lifecycle.ViewModelProviders
 
 abstract class BaseViewModelActivity<VM: BaseViewModel> : BaseActivity() {
 

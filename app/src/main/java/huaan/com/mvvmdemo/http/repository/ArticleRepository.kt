@@ -10,11 +10,7 @@ import kotlinx.coroutines.delay
 
 class ArticleRepository : BaseRepository() {
 
-    suspend fun getDatas(): ResponseData<List<Data>> {
-       return request {
-           delay(10000)
-           Log.i(ScrollingViewModel::class.java.simpleName,"request run in  ${Thread.currentThread().name}")
-           RetrofitClient.reqApi.getDatas().await() }
+    suspend fun getDatas(): ResponseData<List<Data>> = request {
+        RetrofitClient.reqApi.getDatas()
     }
-
 }

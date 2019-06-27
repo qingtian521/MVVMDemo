@@ -255,6 +255,35 @@ open class BaseViewModel : ViewModel(), LifecycleObserver{
     }
 }
 ~~~
+## 更新Retrofit 2.6.0
+看了之前评论区大佬的建议，将Retrofit更新到了2.6.0，同时这次更新了viewModelScope 来管理协程，
+项目换成了androidx，这样一来看起来就很赏心悦目了，下面贴一点修改的地方，看一下
+~~~
+    //运行在UI线程的协程
+    fun launchUI(block: suspend CoroutineScope.() -> Unit) = viewModelScope.launch {
+        try {
+            block()
+        } catch (e: Exception) {
+            error.value = e
+        } finally {
+            finally.value = 200
+        }
+    }
+~~~
+修改为viewModelScope后就不需要像之前一样，在onCleared取消协程了，因为这一些列操作，他已经帮我们完成了
+
+~~~
+interface RequestService {
+    @GET("wxarticle/chapters/json")
+   suspend fun getDatas() : ResponseData<List<Data>>
+}
+
+suspend fun getDatas(): ResponseData<List<Data>> = request {
+    RetrofitClient.reqApi.getDatas()
+}
+~~~
+请求接口声明可以直接申明为suspend 同时取消掉返回Deferred，请求方法中也可以去掉await（）因为retrofit2.6.0内部可以支持协程，也就不需要我们再处理了
+
 
 ## 结语
 上面只是描述了一些实现过程，具体使用还得参考demo，基本上能满足大部分的需求，要是感兴趣的小伙伴，可以下载demo参考，感觉不错的话，顺手点个赞就很满足了。于所学不精，可能会有使用不当之处，希望各位大佬能指出不当的地方，深表感谢。

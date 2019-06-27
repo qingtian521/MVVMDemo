@@ -1,11 +1,11 @@
 package huaan.com.mvvmdemo
-
-import android.arch.lifecycle.Observer
-
-import android.support.design.widget.Snackbar
-import android.support.v7.widget.LinearLayoutManager
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import huaan.com.mvvmdemo.http.adapter.KotlinDataAdapter
 import huaan.com.mvvmdemo.http.base.BaseViewModelActivity
 import huaan.com.mvvmdemo.http.databean.Data
@@ -24,7 +24,7 @@ class ScrollingActivity : BaseViewModelActivity<ScrollingViewModel>() {
     private val datas = mutableListOf<Data>()
 
     override fun initView() {
-        recycleView.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
+        recycleView.layoutManager = LinearLayoutManager(applicationContext,RecyclerView.VERTICAL,false)
         recycleView.adapter = createAdapter()
     }
 
