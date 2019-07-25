@@ -40,12 +40,6 @@ abstract class BaseActivity : AppCompatActivity(),EasyPermissions.PermissionCall
     }
 
 
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //检测是否有内存泄漏
-    }
-
     //请求一些必须要的权限
     protected fun requestPermission(permission : Array<String>) {
         if (EasyPermissions.hasPermissions(this, *permission)) {

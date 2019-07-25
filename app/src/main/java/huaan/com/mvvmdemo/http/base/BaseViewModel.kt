@@ -18,7 +18,9 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     //运行在UI线程的协程
     fun launchUI(block: suspend CoroutineScope.() -> Unit) = viewModelScope.launch {
         try {
-            block()
+            withTimeout(5000){
+                block()
+            }
         } catch (e: Exception) {
             error.value = e
         } finally {
